@@ -20,7 +20,7 @@ player players[6];
 // Main program
 int main(void) 
 {
-	int input=0, numplayers=0;
+	int input, numplayers, inputtype, game= 1;
 	
 	// Asks the user to input a set of players (max 6). 
 	printf("Please input  number of players 2-6");
@@ -31,44 +31,44 @@ int main(void)
    		scanf ("%d", &input);
 	}
    
-     //input a name.
-	for (numplayers=0;numplayers >= 0 && numplayers <= input; ++numplayers)
+// Asks the user to input a name.
+	for (numplayers=0;numplayers >= 0 && numplayers < input; ++numplayers)
   	{
-		printf("Please input name for player %d", numplayers+1);
+		printf("Please input name for player %d", numplayers);
 		scanf("%s", &players[numplayers].name);
-		printf("%s/n",players[numplayers].name) ;
    	}
- 
-   // For each player the user has to select a type (Elf, Human, Ogre, Wizard) 
+ //life points are initially set to 100.	
+	for (numplayers=0;numplayers >= 0 && numplayers <input; ++numplayers)
+	{
+	players[numplayers].life= 100;
+	}
+	 
+ // For each player the user has to select a type (Elf, Human, Ogre, Wizard) 
 	for (numplayers=0;numplayers >= 0 && numplayers <= input; ++numplayers)
  	{
 		printf("Please input choose a chartcter type for player %d :/n 1 Elf/n 2 Human/n 3 Ogre/n 4 Wizard/n ", numplayers+1);
-		scanf ("%d", &input);
-		while (input <1 || input > 6)
+		scanf ("%d", &inputtype);
+		while (inputtype <1 || inputtype > 4)
 		{
 			printf("Input is invaid, Please input number of between 1 and 4");
 			scanf ("%d", &input);
 		}
 		switch (input)
 		{
-			case 1;
+			case 1:
 			elf();
 			break;
 		
-			case 2; 
+			case 2: 
 			human();
 			break;
 		
-			case 3; 
+			case 3: 
 			ogre();
 			break;
 		
-			case 4;
+			case 4:
 			wizard();
-			break;
-		
-			default;
-			printf("Input is invaid, Please input number of between 1 and 4");
 			break;
 		}			
 	}
