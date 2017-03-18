@@ -53,76 +53,93 @@ int main(void)
 			printf("Input is invaid, Please input number of between 1 and 4");
 			scanf ("%d", &input);
 		}
+		// Switch calls functions to randomly assign values and print value
 		switch (input)
 		{
 			case 1:
-			elf();
+			elf(players, numplayers);
+			showvalues(players,numplayers);
 			break;
 		
 			case 2: 
-			human();
+			human(players, numplayers);
+			showvalues(players, numplayers);
 			break;
 		
 			case 3: 
-			ogre();
+			ogre(players, numplayers);
+			showvalues(players,numplayers);
 			break;
 		
 			case 4:
-			wizard();
+			wizard(players,numplayers);
+			showvalues(players, numplayers);
 			break;
 		}			
 	}
 }
-	
-int elf( player players[numplayers], int numplayers)
+// Randomly assign values Elf
+player elf( player players[], int numplayers)
 {
 	srand(time(NULL));
+	strcpy(players[numplayers].type, "Elf");
 	players[numplayers].smartness = (rand()%(100-70))+70;
-	players[numplayers].strength=(rand()%(50-1))+1; 
-	players[numplayers].magic =(rand()%(80-51))+51; 
-	players[numplayers].luck = (rand()%(100-60))+60; 
+	players[numplayers].strength=(rand()%(50-1))+1;
+	players[numplayers].magic =(rand()%(80-51))+51;
+	players[numplayers].luck = (rand()%(100-60))+60;
 	players[numplayers].dexterity=(rand()%(100-1))+1;
-
-	return players[numplayers] ;
-
-}
-human(player players[numplayers], int numplayers)
-{
-	while ((players[numplayers].smartness + players[numplayers].strength + players[numplayers].magic+ players[numplayers].luck + players[numplayers].dexterity) = 0 || (players[numplayers].smartness + players[numplayers].strength + players[numplayers].magic+ players[numplayers].luck + players[numplayers].dexterity) >300) 
-	{
-		srand(time(NULL));
-		players[numplayers].smartness =(rand()%(100-1))+1;
-		players[numplayers].strength=(rand()%(100-1))+1; 
-		players[numplayers].magic =(rand()%(100-1))+1; 
-		players[numplayers].luck=(rand()%(100-1))+1; 
-		players[numplayers].dexterity=(rand()%(100-1))+1;
-	}
 	
-	return players[numplayers] ;	
+return players[numplayers];
 }
+// Randomly assign values Human
+player human(player players[], int numplayers)
+{
+strcpy(players[numplayers].type, "Human");
 
-ogre(player players[numplayers], int numplayers)
+while ((players[numplayers].smartness + players[numplayers].strength + players[numplayers].magic+ players[numplayers].luck + players[numplayers].dexterity)== 0 ||(players[numplayers].smartness + players[numplayers].strength + players[numplayers].magic+ players[numplayers].luck + players[numplayers].dexterity)>300)
 {
 	srand(time(NULL));
-	players[numplayers].smartness =(rand()%(20-1))+1;
-	players[numplayers].strength=(rand()%(100-80))+80; 
-	players[numplayers].magic = 0; 
-	players[numplayers].luck=(rand()%(100-1))+1; 
-	players[numplayers].dexterity=(rand()%(100-80))+80;
-	
-	return players[numplayers] ;
-
-}
-
-wizard(player players[numplayers], int numplayers)
-{
-	srand(time(NULL));
-	players[numplayers].smartness =(rand()%(100-90))+90;
-	players[numplayers].strength=(rand()%(20-1))+1; 
-	players[numplayers].magic = (rand()%(100-80))+80;
-	players[numplayers].luck=(rand()%(100-50))+50; 
+	players[numplayers].smartness =(rand()%(100-1))+1;
+	players[numplayers].strength=(rand()%(100-1))+1;
+	players[numplayers].magic =(rand()%(100-1))+1;
+	players[numplayers].luck=(rand()%(100-1))+1;
 	players[numplayers].dexterity=(rand()%(100-1))+1;
+	
 }
+		return players[numplayers];
+}
+// Randomly assign values Ogre
+player ogre(player players[], int numplayers){
+srand(time(NULL));
+strcpy(players[numplayers].type, "Ogre");
+players[numplayers].smartness =(rand()%(20-1))+1;
+players[numplayers].strength=(rand()%(100-80))+80;
+players[numplayers].magic = 0;
+players[numplayers].luck=(rand()%(100-1))+1;
+players[numplayers].dexterity=(rand()%(100-80))+80;
 
+		return players[numplayers];
+}
+// Randomly assign values Wizard
+player wizard(player players[], int numplayers)
+{
+srand(time(NULL));
+strcpy(players[numplayers].type, "Wizard");
+players[numplayers].smartness =(rand()%(100-90))+90;
+players[numplayers].strength=(rand()%(20-1))+1;
+players[numplayers].magic = (rand()%(100-80))+80;
+players[numplayers].luck=(rand()%(100-50))+50;
+players[numplayers].dexterity=(rand()%(100-1))+1;
 
-attack (player players[numplayers], int numplayers)
+		return players[numplayers];
+}
+// Prints values
+void showvalues(player players[], int numplayers)
+{
+printf("Player %d %s\n", numplayers, players[numplayers].name);
+printf("Smartness = %d\n",players[numplayers].smartness);
+printf("strength = %d\n",players[numplayers].strength);
+printf("magic = %d\n",players[numplayers].magic);
+printf("luck = %d\n",players[numplayers].luck);
+printf("dexterity = %d\n",players[numplayers].dexterity);
+}
