@@ -1,8 +1,10 @@
 
 #include<string.h>
 #include <stdio.h>
-
-typedef struct Player
+#include <time.h>
+#include <stdlib.h>
+// Struct that hold all players values
+typedef struct player
 {
 	char name[20];
 	char type[6];
@@ -12,14 +14,13 @@ typedef struct Player
 	int magic;
 	int luck;
 	int dexterity;
+	int stillalive;
 }player;
 player players[6];
+// Main program
 int main(void) 
 {
 	int input=0, numplayers=0;
-	int a,b;
-	char name[20];
-
 	
 	// Asks the user to input a set of players (max 6). 
 	printf("Please input  number of players 2-6");
