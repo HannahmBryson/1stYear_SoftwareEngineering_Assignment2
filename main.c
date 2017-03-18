@@ -23,11 +23,11 @@ player human(player players[], int numplayers);
 player ogre(player players[], int numplayers);
 player wizard(player players[], int numplayers);
 void showvalues(player players[], int numplayers);
+player attack (player players[], int numplayers, int input);
 // Main program
 int main(void) 
 {
 	int input, numplayers, inputtype, game= 1;
-	
 	// Asks the user to input a set of players (max 6). 
 	printf("Please input  number of players 2-6");
 	scanf ("%d", &input);
@@ -183,4 +183,73 @@ printf("strength = %d\n",players[numplayers].strength);
 printf("magic = %d\n",players[numplayers].magic);
 printf("luck = %d\n",players[numplayers].luck);
 printf("dexterity = %d\n",players[numplayers].dexterity);
+}
+// Attack function
+player attack (player players[], int numplayers, int input)
+{
+	int attacker, attacked, a;
+	attacker=numplayers;
+	printf("Select a Player to attack");
+	scanf("%d", &a);
+	attacked=a;
+	if (attacked==attacker)
+	{
+		printf("You can't attack your self, please select another player");// Attack function
+player attack (player players[], int numplayers, int input)
+{
+	int attacker, attacked;
+	attacker=numplayers;
+	printf("Select a Player to attack");
+	scanf("%d", &attacked);
+	if (attacked==attacker)
+	{
+		printf("You can't attack your self, please select another player");
+		scanf("%d", &attacked);
+	}
+	else if (attacked >= input)
+	{
+		printf("Input is invalid, Please input another number 1");
+		scanf ("%d", &attacked);
+	}
+	else{
+		if (players[attacked].strength <= 70 && players[attacked].life >0 )
+					{
+					players[attacked].life= players[attacked].life -  (0.5 * players[attacked].strength);
+					}
+				else
+					{
+						if(	players[attacker].life >0)
+						{
+							players[attacker].life= players[attacked].life -  (0.3 * players[attacked].strength);
+						}
+					}
+		printf("Player %d  attacks Player %d \n", attacker, attacked);
+		printf("Player %d  life points are  now %d \n", attacker, players[attacker].life);
+		printf("Player %d  life points are  now %d \n", attacked, players[attacked].life);
+		}
+		return players[attacker],players[attacked];
+}
+	}
+	else if (attacked >= input)
+	{
+		printf("Input is invalid, Please input another number");
+		scanf ("%d", &attacked);/* CHECK -1 or +1*/
+	}
+	else{
+		if (players[attacked].strength <= 70 && players[attacked].life >0 )
+					{
+					players[attacked].life= players[attacked].life -  (0.5 * players[attacked].strength);
+					}
+				else
+					{
+						if(	players[attacker].life >0)
+						{
+							players[attacker].life= players[attacked].life -  (0.3 * players[attacked].strength);
+						}
+					}
+		printf("Player %d  attacks Player %d \n", attacker, attacked);
+		printf("Player %d  life points are  now %d \n", attacker, players[attacker].life);
+		printf("Player %d  life points are  now %d \n", attacked, players[attacked].life);
+		}
+		return players[attacker],players[attacked];
 }
