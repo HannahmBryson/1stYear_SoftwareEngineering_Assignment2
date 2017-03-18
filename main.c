@@ -83,6 +83,41 @@ int main(void)
 			break;
 		}			
 	}
+	// The game continues as long as two players are still alive
+  while ( game != input)
+  {
+	for (numplayers=0;numplayers >= 0 && numplayers < input; ++numplayers)
+	{
+
+		if (players[numplayers].life >0)
+		{
+			printf("<%s>(<%s>, <%d>", players[numplayers].name,players[numplayers].type,players[numplayers].life);
+			attack(players, numplayers, input);
+		}
+		// Changes the player alive status
+		else if (players[numplayers].stillalive ==0)
+		{
+		printf("player %d is out of the game", numplayers);
+		players[numplayers].stillalive = 1;
+		++game;
+		}
+	}
+   }
+// Prints the winner and losers
+  for (numplayers=0;numplayers >= 0 && numplayers < input; ++numplayers)
+	{
+
+		if (players[numplayers].stillalive ==0)
+		{
+			printf("player %d is the winner", numplayers);
+		}
+		else
+		{
+			printf("player %d lost", numplayers);
+		}
+
+	return 0;
+}
 }
 // Randomly assign values Elf
 player elf( player players[], int numplayers)
