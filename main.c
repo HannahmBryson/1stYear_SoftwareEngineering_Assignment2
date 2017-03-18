@@ -17,6 +17,12 @@ typedef struct player
 	int stillalive;
 }player;
 player players[6];
+//function header
+player elf( player players[], int numplayers);
+player human(player players[], int numplayers);
+player ogre(player players[], int numplayers);
+player wizard(player players[], int numplayers);
+void showvalues(player players[], int numplayers);
 // Main program
 int main(void) 
 {
