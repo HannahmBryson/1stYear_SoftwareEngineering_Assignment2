@@ -2,7 +2,7 @@ Software Engineering Project 1
 (Comp 10050)
 Assignment 2 – Players & Slots Representation, Slots and Attack behaviour
  
-Aim: Representation of players and slots types using struct; and attacks  behaviour
+Aim: Representation of players using struct; and attacks  behaviour
  
 A. Detailed Specification
 The objective for this assignment is to create a program that:
